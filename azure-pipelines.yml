@@ -19,5 +19,12 @@ steps:
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
+    
 
 - task: PublishBuildArtifacts@1
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
